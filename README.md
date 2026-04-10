@@ -15,6 +15,9 @@ A TypeScript library for building high-performance geospatial layers on top of d
 - **Kalman filter** - 1D GPS coordinate smoothing per axis
 - **Douglas-Peucker simplification** - Polyline compression for dense trail data
 
+![Screenshot](img/sc2.png)
+![Screenshot](img/sc3.png)
+
 ## Architecture
 
 ```mermaid

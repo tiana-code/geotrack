@@ -1,6 +1,6 @@
 # geotrack - Real-Time Geospatial Visualization Toolkit (deck.gl)
 
-A TypeScript library for building high-performance geospatial layers on top of deck.gl and MapLibre GL. Includes vessel trail rendering with adaptive smoothing, great-circle route visualization, ocean current / wind arrow fields, geodetic math utilities, dead reckoning, and EWMA noise filtering.
+TypeScript layers for deck.gl + MapLibre GL: vessel trails with adaptive smoothing, great-circle routes, wind/current arrow fields, dead reckoning, EWMA filtering.
 
 ![Screenshot](img/sc1.png)
 
@@ -19,34 +19,6 @@ A TypeScript library for building high-performance geospatial layers on top of d
 ![Screenshot](img/sc3.png)
 
 ## Architecture
-
-```mermaid
-flowchart TD
-    subgraph Layers
-        A[VesselTrailLayer\nPathLayer]
-        B[GreatCircleLayer\nPathLayer + ScatterplotLayer + TextLayer\nTurf.js great-circle + bearing]
-        C[OceanCurrentsLayer\nScatterplotLayer + LineLayer + PathLayer]
-    end
-
-    subgraph Utils
-        D[geoUtils\nhaversineKm - calculateBearing\ndouglasPeucker - SimpleKalmanFilter\ninterpolateGreatCircle]
-        E[deadReckoning\npredictPosition - lerpHeading]
-        F[ewma\newmaSmooth - createEwmaFilter]
-        G[routeValidation\ndoesSegmentCrossLand - validateRoute\nisPointOnLand]
-        K[colorUtils\ngetVesselColor - getSpeedColor - getFuelColor]
-    end
-
-    subgraph Types
-        H[VesselPosition - VesselRoute - RoutePoint\nRGBAColor - ColorMode - TrailMode]
-    end
-
-    A --> D
-    A --> G
-    A --> K
-    G --> D
-    K --> H
-    A --> H
-```
 
 **Data flow:**
 
